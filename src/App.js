@@ -5,7 +5,6 @@ import axios from 'axios';
 import {Login} from './components/Login';
 import {DataPage} from './components/DataPage';
 
-
 class App extends Component {
   constructor() {
     super()
@@ -51,8 +50,6 @@ class App extends Component {
             }
           }
          })
-
-    this.subscribe()
   }
 
   subscribe = () => {
@@ -65,6 +62,7 @@ class App extends Component {
 
   logout = () => {
     this.setState({url: '', status: null, tryToConnectCount: 0})
+    window.localStorage.removeItem('autentification_token')
   }
 
   render() {

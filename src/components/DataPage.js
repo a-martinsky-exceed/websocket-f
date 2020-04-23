@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import { w3cwebsocket as W3CWebSocket } from "websocket";
-import { format, fromUnixTime } from 'date-fns'
+import { format, fromUnixTime } from 'date-fns';
+import Loader from 'react-loader-spinner';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export class DataPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
       serverTime: 0,
-      connection: false
+      connection: false,
+      showPreloader: false
     }
   }
 
@@ -15,6 +18,13 @@ export class DataPage extends Component {
     if(this.props.status === 200) {
       this.connect()
     }
+  }
+
+  componentDidMount() {
+    this.setState({showPreloader: true})
+    setTimeout(() => {
+          this.setState({showPreloader: false})
+    }, 3000);
   }
 
   connect = () => {
@@ -40,13 +50,31 @@ export class DataPage extends Component {
 
   render() {
     return (
+      this.state.showPreloader ?
+      <div className="preloader">
+        <Loader
+          type="BallTriangle"
+          color="#00BFFF"
+          height={150}
+          width={150}
+        />
+      </div>
+      :
       <div className='window connection'>
         <div>WebSocket:
           <span className={this.state.connection ? 'btn-success' : 'btn-danger'}>
             {this.state.connection ? 'Connected' : 'Disconnected'}
           </span>
         </div>
-        <div>{this.convertTime(this.state.serverTime)}</div>
+        <div className="time">
+          {this.convertTime(this.state.serverTime)}
+          <Loader
+            type="Watch"
+            color="#00BFFF"
+            height={20}
+            width={35}
+          />
+        </div>
         <button className='btn btn-link' onClick={this.props.logout}>Logout</button>
       </div>
     )

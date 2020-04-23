@@ -1,5 +1,5 @@
 {
-  "name": "react-api",
+  "name": "websocket-f",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,9 +9,11 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "date-fns": "^2.12.0",
+    "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
+    "react-loader-spinner": "^3.1.14",
     "react-scripts": "3.4.1",
     "websocket": "^1.0.31"
   },
@@ -36,7 +38,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "node-sass": "^4.13.1"
-  }
+  "devDependencies": {}
 }

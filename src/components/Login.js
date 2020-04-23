@@ -10,14 +10,14 @@ export class Login extends Component {
       <div className="window login">
         <div className="form-group row">
           <label className="col-form-label">Username</label>
-          <div className="">
+          <div>
             <input type='text' className={`username form-control ${valid}`} onChange={(e)=> this.props.handleInput(e)} value={this.props.username} placeholder='username'/>
           </div>
         </div>
 
         <div className="form-group row">
           <label className="col-form-label">Password</label>
-          <div className="">
+          <div>
             <input type='password' className={`password form-control ${valid}`} onChange={(e)=> this.props.handleInput(e)} value={this.props.password} placeholder='password'/>
           </div>
         </div>
