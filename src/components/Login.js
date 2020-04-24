@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 
 class Login extends Component {
+  errorMessage = existingError => {
+    let message = "";
+    if (existingError) {
+      message = "Wrong username or password";
+    } else if (this.props.status > 0) {
+      message = "Something went wrong, please try again.";
+    }
+    return message;
+  };
+
   render() {
     const existingError = [400, 401].includes(this.props.status);
     const valid = existingError ? "is-invalid" : "";
@@ -36,15 +46,11 @@ class Login extends Component {
             />
           </div>
         </div>
-        {![200, null].includes(this.props.status) && (
+        {![200, null].includes(this.props.status) &&
           <div className="error">
-            {existingError
-              ? "Wrong username or password"
-              : this.props.status > 0
-                ? `Error ${this.props.status}`
-                : ""}
+            {this.errorMessage(existingError)}
           </div>
-        )}
+        }
         <div className="submit form-group row">
           <div className="col-sm-10">
             <button
