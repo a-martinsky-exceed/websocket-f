@@ -14,11 +14,8 @@ class DataPage extends Component {
     };
   }
 
-  componentWillMount() {
-    setTimeout(() => this.connect(), 500);
-  }
-
   componentDidMount() {
+    setTimeout(() => this.connect(), 500)
     this.setState({
       showPreloader: true
     });
